@@ -22,6 +22,11 @@ public class QuestionService {
         return customQuestionRepository.findByCourse(courseName);
     }
 
+    public Question getRandomQuestion(String courseName) {
+        return customQuestionRepository.findRandomQuestion(courseName);
+    }
+
+
 
     // Other business logic methods
 }

@@ -18,4 +18,10 @@ public class CustomQuestionRepository {
         Query query = entityManager.createNativeQuery(sql, Question.class);
         return query.getResultList();
     }
+
+    public Question findRandomQuestion(String courseName) {
+        String sql = "SELECT * FROM " + courseName + " ORDER BY RANDOM() LIMIT 1"; 
+        Query query = entityManager.createNativeQuery(sql, Question.class);
+        return (Question) query.getSingleResult();
+    }
 }

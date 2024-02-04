@@ -24,6 +24,13 @@ public class QuestionController {
     public List<Question> getQuestionsByCourse(@PathVariable String courseName) {
         return questionService.getQuestionsByCourse(courseName);
     }
+
+    @GetMapping("/random/{courseName}")
+    public Question getRandomQuestion(@PathVariable String courseName) {
+        return questionService.getRandomQuestion(courseName);
+    }
+
+    
     
 
     // Other endpoints
