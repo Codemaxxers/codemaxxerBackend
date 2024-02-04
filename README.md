@@ -12,7 +12,7 @@
 ## Visual thoughts
 
 - Starter code should be fun and practical
-- Organize with Bootstrap menu 
+- Organize with Bootstrap menu
 - Add some color and fun through VANTA Visuals (birds, halo, solar, net)
 - Show some practical and fun links (hrefs) like Twitter, Git, Youtube
 - Show student project specific links (hrefs) per page

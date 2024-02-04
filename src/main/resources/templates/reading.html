@@ -21,30 +21,28 @@
 
         <div class="container py-4 text-light bg-success">
 
-            <h2>Person Viewer</h2>
-            <a th:href="@{/mvc/person/create/}">Create Person</a>
+            <h2>Person Viewer + console (cannot delete admins)</h2>
+            <a th:href="@{/creating}">Create Person</a>
+            <a th:href="@{/updating}">Update Person</a>
+            <a th:href="@{/deleting}">Delete Person</a>
             <div class="row align-items-md-stretch">
                 <table class="table">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>User ID</th>
+                        <th>Email</th>
                         <th>Person</th>
-                        <th>Age</th>
-                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="person : ${list}">
+                    <tr th:each="person : ${persons}">
                         <td th:text="${person.id}">Person ID</td>
-                        <td th:text="${person.email}">Birth Date</td>
+                        <td th:text="${person.email}">Birth Email</td>
                         <td th:text="${person.name}">Name</td>
-                        <td th:if="${person.getAge() != -1}" th:text="${person.getAge()}">Age</td>
-                        <td th:unless="${person.getAge() != -1}" th:text="Unknown">Unknown Age</td>
                         <td>
+                            <a th:href="@{/delete/{id}(id=${person.id})}">Delete</a>
+                            <a th:href="@{/update/{id}(id=${person.id})}">updating</a>
                             <!--- <a th:href="@{/mvc/notes/{id}(id = ${person.id})}">Notes</a> -->
-                            <a th:href="@{/mvc/person/update/{id}(id = ${person.id})}">Update</a>
-                            <a th:href="@{/mvc/person/delete/{id}(id = ${person.id})}">Delete</a>
                         </td>
                     </tr>
                     </tbody>
@@ -56,5 +54,6 @@
 
 </th:block>
 </body>
+
 
 </html>

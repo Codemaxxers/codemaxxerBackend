@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -18,9 +19,37 @@ public class ChatGPTService {
     @Value("${openai.api.key}")
     private String apiKey;
 
-    private final String apiUrl = "https://api.openai.com/v1/completions";
+    private final String apiUrl = "https://api.openai.com/v1/chat/completions";
 
-    public String getResponse(String prompt) throws JsonProcessingException {
+    // Message class
+    public static class Message {
+        private String role;
+        private String content;
+
+        public Message(String role, String content) {
+            this.role = role;
+            this.content = content;
+        }
+
+        // Getters and setters
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+    }
+
+    public String getResponse(List<Message> messages) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -29,7 +58,7 @@ public class ChatGPTService {
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, Object> requestBodyMap = new HashMap<>();
         requestBodyMap.put("model", "gpt-3.5-turbo");
-        requestBodyMap.put("prompt", prompt);
+        requestBodyMap.put("messages", messages);
         requestBodyMap.put("max_tokens", 150);
 
         String requestBody = objectMapper.writeValueAsString(requestBodyMap);

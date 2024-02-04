@@ -186,7 +186,7 @@ public class PersonApiController {
     public ResponseEntity<Person> addPointsCSP(@RequestParam("points") int points) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Person person = repository.findByEmail(username);  // Retrieve data for the authenticated user
-        person.setCsaPoints(person.getCspPoints() + points);
+        person.setCspPoints(person.getCspPoints() + points);
         repository.save(person);
         return new ResponseEntity<>(person, HttpStatus.OK);
     }

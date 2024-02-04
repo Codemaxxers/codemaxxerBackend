@@ -30,15 +30,14 @@ import com.nighthawk.spring_portfolio.mvc.person.Person;
 import com.nighthawk.spring_portfolio.mvc.person.PersonDetailsService;
 import com.nighthawk.spring_portfolio.mvc.person.PersonJpaRepository;
 @Controller  // HTTP requests are handled as a controller, using the @Controller annotation
-public class readcontroller {
+public class updatecontroller {
 
     @Autowired
     private PersonJpaRepository repository;
 
     // @GetMapping handles GET request for /greet, maps it to greeting() method
-    @GetMapping("/reading")
+    @GetMapping("/updating")
     @PreAuthorize("isAuthenticated()")
-
     //@PreAuthorize("hasRole('ROLE_ADMIN')")
     // @RequestParam handles variables binding to frontend, defaults, etc
     public String person(Model model) {
@@ -47,20 +46,6 @@ public class readcontroller {
         // System.out.println(persons.toString()); for testing purposes
         return "reading";
         }
-
-        @GetMapping("/delete/{id}")
-        public String deletePerson(@PathVariable Long id) {
-            if(id < 7)
-            { 
-            System.out.println("can't delete admins!");
-            return "redirect:/reading";
-         }
-         else {
-            repository.deleteById(id);
-            return "redirect:/reading";
-         }
-        }
-        
-
+    
 
 }

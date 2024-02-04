@@ -69,19 +69,20 @@ public class SecurityConfig {
 				// list the requests/endpoints need to be authenticated
 				.authorizeHttpRequests(auth -> auth
 					.requestMatchers("/authenticate").permitAll()
-					.requestMatchers("/mvc/person/update/**", "/mvc/person/delete/**").hasAnyAuthority("ROLE_PLAYER")
-					.requestMatchers("/api/person/delete/**").hasAnyAuthority("ROLE_PLAYER")
+					.requestMatchers("/reading").hasAnyAuthority("ROLE_ADMIN")
+					.requestMatchers("/mvc/person/update/**", "/mvc/person/delete/**").hasAnyAuthority("ROLE_ADMIN")
+					.requestMatchers("/api/person/delete/**").hasAnyAuthority("ROLE_ADMIN")
 					.requestMatchers("/**").permitAll()
 				)
 				// support cors
 				.cors(Customizer.withDefaults())
 				.headers(headers -> headers
+					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "http://127.0.0.1:4100", "https://codemaxxers.stu.nighthawkcodingsociety.com", "https://codemaxxers.github.io"))
 					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Credentials", "true"))
 					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-ExposedHeaders", "*", "Authorization"))
 					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type", "Authorization", "x-csrf-token"))
 					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-MaxAge", "600"))
 					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "GET", "OPTIONS", "HEAD"))
-					//.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "https://nighthawkcoders.github.io", "http://localhost:4000"))
 				)
 				.formLogin(form -> form 
 					.loginPage("/login")
