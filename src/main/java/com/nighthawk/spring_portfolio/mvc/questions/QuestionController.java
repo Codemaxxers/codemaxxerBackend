@@ -30,6 +30,12 @@ public class QuestionController {
         return questionService.getRandomQuestion(courseName);
     }
 
+    @GetMapping("/newRandom/{userId}/{courseName}")
+    public Question getNewRandomQuestionForUser(@PathVariable Long userId, @PathVariable String courseName) {
+        return questionService.getNewRandomQuestionForUser(userId, courseName);
+    }
+
+
     
     
 

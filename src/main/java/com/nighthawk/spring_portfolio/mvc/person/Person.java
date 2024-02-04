@@ -27,6 +27,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.util.Set;
+import java.util.List;
+import java.util.HashSet;
+import com.nighthawk.spring_portfolio.mvc.questions.Question;
+import jakarta.persistence.*;
+
 /*
 Person is an POJO, Plain Old Java Object.
 First set of annotations add functionality to POJO
@@ -80,6 +86,16 @@ public class Person {
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private Map<String,Map<String, Object>> stats = new HashMap<>(); 
+
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "person_questions",
+        joinColumns = @JoinColumn(name = "person_id"),
+        inverseJoinColumns = @JoinColumn(name = "question_id")
+    )
+    private Set<Question> solvedQuestions = new HashSet<>();
     
 
     // Constructor used when building object from an API
@@ -156,6 +172,14 @@ public class Person {
         // Array definition and data initialization
         Person persons[] = {p1, p2, p3, p4, p5, p6, p7};
         return(persons);
+    }
+
+    public Set<Question> getSolvedQuestions() {
+        return solvedQuestions;
+    }
+
+    public void setSolvedQuestions(Set<Question> solvedQuestions) {
+        this.solvedQuestions = solvedQuestions;
     }
 
     public static void main(String[] args) {
