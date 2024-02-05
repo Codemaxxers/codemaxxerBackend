@@ -51,17 +51,17 @@ public class GamePanel extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        
+
         double drawInterval = 1000000000/FPS; // screen is redrawn 60 times per sec
         double nextDrawTime = System.nanoTime() + drawInterval; 
         while(gameThread != null) {
 
-            
+
             // 1- UPDATE character info like position 
             update();
             // 2 - DRAW Screen with updated information
             repaint();
-            
+
         try {
             double remainingTime = nextDrawTime - System.nanoTime() ; 
             // convert nano to milli
@@ -70,7 +70,7 @@ public class GamePanel extends JPanel implements Runnable{
             if(remainingTime < 0) {
                 remainingTime = 0;
             }
-            
+
             Thread.sleep((long) remainingTime);
 
             nextDrawTime += drawInterval;
@@ -106,5 +106,5 @@ public class GamePanel extends JPanel implements Runnable{
         g2.dispose();
     }
 
-    
+
 }
