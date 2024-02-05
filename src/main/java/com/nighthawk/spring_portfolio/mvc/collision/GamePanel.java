@@ -1,9 +1,10 @@
 package com.nighthawk.spring_portfolio.mvc.collision;
 
 import org.mapeditor.core.Map;
+import org.mapeditor.core.Tile;
 import org.mapeditor.core.MapLayer;
 import org.mapeditor.core.TileLayer;
-import org.mapeditor.core.Tileset;
+import org.mapeditor.core.TileSet;
 import org.mapeditor.io.TMXMapReader;
 
 import java.awt.Color;
@@ -42,7 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
     int playerSpeed = 4;
 
     Map tiledMap;
-    Tileset tileset;
+    TileSet tileset;
     int mapWidth;
     int mapHeight;
 
@@ -70,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
             mapHeight = tiledMap.getHeight();
 
             // Assuming only one tileset for simplicity
-            tileset = tiledMap.getTilesets().get(0);
+            tileset = tiledMap.getTileSets().get(0);
 
             // Identify layers to render (TileLayers only)
             for (MapLayer layer : tiledMap) {
@@ -81,8 +82,12 @@ public class GamePanel extends JPanel implements Runnable {
 
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle other Exceptions
         }
     }
+
 
     public void startGameThread() {
         gameThread = new Thread(this);
@@ -167,12 +172,14 @@ public class GamePanel extends JPanel implements Runnable {
                 int tileY = startTileY + y;
 
                 if (tileX < mapWidth && tileY < mapHeight) {
-                    int tileId = layer.getTileAt(tileX, tileY);
-                    if (tileId != 0) {
-                        Image tileImage = tileset.getTile(tileId).getImage();
-                        int renderX = x * tileSize - playerX % tileSize;
-                        int renderY = y * tileSize - playerY % tileSize;
-                        g.drawImage(tileImage, renderX, renderY, tileSize, tileSize, this);
+                    Tile tile = layer.getTileAt(tileX, tileY);
+                    if (tile != null) {
+                        Image tileImage = tile.getImage();
+                        if (tileImage != null) {
+                            int renderX = x * tileSize - playerX % tileSize;
+                            int renderY = y * tileSize - playerY % tileSize;
+                            g.drawImage(tileImage, renderX, renderY, tileSize, tileSize, this);
+                        }
                     }
                 }
             }
