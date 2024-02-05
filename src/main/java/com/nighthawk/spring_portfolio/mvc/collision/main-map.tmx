@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="60" height="80" tilewidth="16" tileheight="16" infinite="0" nextlayerid="27" nextobjectid="1">
- <tileset firstgid="1" source="../../Games/citynew.tsx"/>
- <tileset firstgid="25201" source="../../Games/newrustic.tsx"/>
+ <tileset firstgid="1" source="rc/main/java/com/nighthawk/spring_portfolio/mvc/collision/citynew.tsx"/>
+ <tileset firstgid="25201" source="src/main/java/com/nighthawk/spring_portfolio/mvc/collision/newrustic.tsx"/>
  <layer id="1" name="lines" width="60" height="80" visible="0" locked="1">
   <data encoding="csv">
 9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9274,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,9249,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
