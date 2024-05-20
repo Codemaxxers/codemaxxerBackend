@@ -42,6 +42,16 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 
     List<Person> findTop5ByOrderByCyberPointsDesc();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    List<Person> findTop5ByOrderByGamesPlayedDesc();
+
+    List<Person> findTop5ByOrderByKeysCollectedDesc();
+
+=======
+>>>>>>> 821fd7d (data base)
+>>>>>>> 732d469 (data base)
     // You can use no query or query
 
     @Query("SELECT p FROM Person p ORDER BY p.cspPoints DESC")
@@ -53,6 +63,18 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
     @Query("SELECT p FROM Person p ORDER BY p.cyberPoints DESC")
     List<Person> findTop5ByCyberPoints();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    @Query("SELECT p FROM Person p ORDER BY p.gamesPlayed DESC")
+    List<Person> findTop5ByGamesPlayed();
+
+    @Query("SELECT p FROM Person p ORDER BY p.keysCollected DESC")
+    List<Person> findTop5ByKeysCollected();
+
+=======
+>>>>>>> 821fd7d (data base)
+>>>>>>> 732d469 (data base)
 }
 
 

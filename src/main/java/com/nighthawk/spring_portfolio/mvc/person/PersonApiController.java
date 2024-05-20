@@ -116,12 +116,15 @@ public class PersonApiController {
         return repository.findTop5ByOrderByCsaPointsDesc();
     }
 
+<<<<<<< HEAD
     @GetMapping("/leaderboardCyber")
     public List<Person> getLeaderboardCyber() {
         // Get top 5 users based on cyberPoints
         return repository.findTop5ByOrderByCyberPointsDesc();
     }
 
+=======
+>>>>>>> 732d469 (data base)
     /*
     DELETE individual Person using ID :)
      */
@@ -388,6 +391,7 @@ public class PersonApiController {
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
+<<<<<<< HEAD
     @PostMapping("/addPointsCyber")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Person> addPointsCyber(@RequestParam("points") int points) {
@@ -435,6 +439,8 @@ public class PersonApiController {
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
+=======
+>>>>>>> 732d469 (data base)
 
     @PostMapping("/changeProfilePic")
     @PreAuthorize("isAuthenticated()")
