@@ -120,7 +120,11 @@ public class PersonApiController {
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> f25cfd0 (keys collected get games played post)
+=======
+>>>>>>> e88d8a6 (data base)
+>>>>>>> 01cc54d (data base)
     @GetMapping("/leaderboardCyber")
     public List<Person> getLeaderboardCyber() {
         // Get top 5 users based on cyberPoints
@@ -128,9 +132,12 @@ public class PersonApiController {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 732d469 (data base)
 =======
+=======
+>>>>>>> 01cc54d (data base)
     @GetMapping("/gamesPlayed")
     public List<Person> getGamesPlayed() {
         // Get top 5 users based on cyberPoints
@@ -145,7 +152,12 @@ public class PersonApiController {
 
 
 >>>>>>> 70fe2a2 (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> f25cfd0 (keys collected get games played post)
+=======
+=======
+>>>>>>> e88d8a6 (data base)
+>>>>>>> 01cc54d (data base)
     /*
     DELETE individual Person using ID :)
      */
@@ -416,7 +428,11 @@ public class PersonApiController {
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> f25cfd0 (keys collected get games played post)
+=======
+>>>>>>> e88d8a6 (data base)
+>>>>>>> 01cc54d (data base)
     @PostMapping("/addPointsCyber")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Person> addPointsCyber(@RequestParam("points") int points) {
@@ -444,10 +460,17 @@ public class PersonApiController {
         // END OF ACCOUNT LEVEL CALCULATION
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> f25cfd0 (keys collected get games played post)
+=======
+=======
+
+
+>>>>>>> e88d8a6 (data base)
+>>>>>>> 01cc54d (data base)
         // START OF LEVEL STATS CALCULATION
         int[] baseStats = {100,107,114,121,128,135,141,148,155,162,169,176,183,190,197,204,211,218,225,232,239,246,253,260,267,274,281,288,295,300};
         int accountLevelMatchingStats = newLevel - 1;
@@ -468,11 +491,17 @@ public class PersonApiController {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 732d469 (data base)
 =======
 >>>>>>> 70fe2a2 (keys collected get games played post)
 >>>>>>> f25cfd0 (keys collected get games played post)
+=======
+>>>>>>> 70fe2a2 (keys collected get games played post)
+=======
+>>>>>>> e88d8a6 (data base)
+>>>>>>> 01cc54d (data base)
 
     @PostMapping("/changeProfilePic")
     @PreAuthorize("isAuthenticated()")
