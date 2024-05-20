@@ -68,6 +68,7 @@ public class Person {
     
     private int csaPoints;
     private int cspPoints;
+    private int cyberPoints;
     private int profilePicInt;
     private int accountPoints;
     private int accountLevel;
@@ -80,6 +81,8 @@ public class Person {
     private int totalHealth;
     private int totalDamage;
     private boolean finishedTutorial;
+    private int gamesPlayed;
+    private int keysCollected;
     /* HashMap is used to store JSON for daily "stats"
     "stats": {
         "2022-11-13": {
@@ -94,12 +97,13 @@ public class Person {
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, int csaPoints, int cspPoints, int profilePicInt, int accountPoints, int accountLevel, int[][] statsArray, List<Integer> inventory, int weaponGearIdEquipped, int armorGearIdEquipped, int accessoryGearIdEquipped, int power, int totalHealth, int totalDamage, boolean finishedTutorial) {
+    public Person(String email, String password, String name, int csaPoints, int cspPoints, int cyberPoints, int profilePicInt, int accountPoints, int accountLevel, int[][] statsArray, List<Integer> inventory, int weaponGearIdEquipped, int armorGearIdEquipped, int accessoryGearIdEquipped, int power, int totalHealth, int totalDamage, boolean finishedTutorial, int gamesPlayed, int keysCollected) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.csaPoints = csaPoints;
         this.cspPoints = cspPoints;
+        this.cyberPoints = cyberPoints;
         this.profilePicInt = profilePicInt;
         this.accountPoints = accountPoints;
         this.accountLevel = accountLevel;
@@ -112,6 +116,8 @@ public class Person {
         this.totalDamage = totalDamage;
         this.totalHealth = totalHealth;
         this.finishedTutorial = finishedTutorial;
+        this.gamesPlayed = gamesPlayed;
+        this.keysCollected = keysCollected;
     }
 
     
@@ -127,6 +133,7 @@ public class Person {
         p1.setPassword("123Theo!");
         p1.setCsaPoints(0);
         p1.setCspPoints(0);
+        p1.setCyberPoints(0);
         p1.setProfilePicInt(0);
         p1.setAccountLevel(1);
         p1.setStatsArray(baseStatsArray);
@@ -135,6 +142,8 @@ public class Person {
         p1.setTotalHealth(100);
         p1.setTotalDamage(100);
         p1.setFinishedTutorial(false);
+        p1.setGamesPlayed(0);
+        p1.setKeysCollected(0);
 
 
         Person p2 = new Person();
@@ -143,6 +152,7 @@ public class Person {
         p2.setPassword("123Justin!");
         p2.setCsaPoints(0);
         p2.setCspPoints(0);
+        p2.setCyberPoints(0);
         p2.setProfilePicInt(0);
         p2.setAccountLevel(1);
         p2.setStatsArray(baseStatsArray);
@@ -151,7 +161,8 @@ public class Person {
         p2.setTotalHealth(100);
         p2.setTotalDamage(100);
         p2.setFinishedTutorial(false);
-
+        p2.setGamesPlayed(0);
+        p2.setKeysCollected(0);
 
         Person p3 = new Person();
         p3.setName("Finn Carpenter");
@@ -159,6 +170,7 @@ public class Person {
         p3.setPassword("123Finn!");
         p3.setCsaPoints(0);
         p3.setCspPoints(0);
+        p3.setCyberPoints(0);
         p3.setProfilePicInt(0);
         p3.setAccountLevel(1);
         p3.setStatsArray(baseStatsArray);
@@ -167,6 +179,8 @@ public class Person {
         p3.setTotalHealth(100);
         p3.setTotalDamage(100);
         p3.setFinishedTutorial(false);
+        p3.setGamesPlayed(0);
+        p3.setKeysCollected(0);
 
         Person p4 = new Person();
         p4.setName("Rachit Jaiswal");
@@ -174,6 +188,7 @@ public class Person {
         p4.setPassword("123Rachit!");
         p4.setCsaPoints(0);
         p4.setCspPoints(0);
+        p4.setCyberPoints(0);
         p4.setProfilePicInt(0);
         p4.setAccountLevel(1);
         p4.setStatsArray(baseStatsArray);
@@ -182,6 +197,8 @@ public class Person {
         p4.setTotalHealth(100);
         p4.setTotalDamage(100);
         p4.setFinishedTutorial(false);
+        p4.setGamesPlayed(0);
+        p4.setKeysCollected(0);
 
         Person p5 = new Person();
         p5.setName("Luna Iwazaki");
@@ -189,6 +206,7 @@ public class Person {
         p5.setPassword("123Luna!");
         p5.setCsaPoints(0);
         p5.setCspPoints(0);
+        p5.setCyberPoints(0);
         p5.setProfilePicInt(0);
         p5.setAccountLevel(1);
         p5.setStatsArray(baseStatsArray);
@@ -197,6 +215,8 @@ public class Person {
         p5.setTotalHealth(100);
         p5.setTotalDamage(100);
         p5.setFinishedTutorial(false);
+        p5.setGamesPlayed(0);
+        p5.setKeysCollected(0);
 
 
         Person p6 = new Person();
@@ -205,6 +225,7 @@ public class Person {
         p6.setPassword("123Tanisha!");
         p6.setCsaPoints(0);
         p6.setCspPoints(0);
+        p6.setCyberPoints(0);
         p6.setProfilePicInt(0);
         p6.setAccountLevel(1);
         p6.setStatsArray(baseStatsArray);
@@ -213,6 +234,8 @@ public class Person {
         p6.setTotalHealth(100);
         p6.setTotalDamage(100);
         p6.setFinishedTutorial(false);
+        p6.setGamesPlayed(0);
+        p6.setKeysCollected(0);
 
 
         Person p7 = new Person();
@@ -221,6 +244,7 @@ public class Person {
         p7.setPassword("123TestPlayer!");
         p7.setCsaPoints(0);
         p7.setCspPoints(0);
+        p7.setCyberPoints(0);
         p7.setProfilePicInt(0);
         p7.setAccountLevel(1);
         p7.setStatsArray(baseStatsArray);
@@ -229,6 +253,8 @@ public class Person {
         p7.setTotalHealth(100);
         p7.setTotalDamage(100);
         p7.setFinishedTutorial(false);
+        p7.setGamesPlayed(0);
+        p7.setKeysCollected(0);
 
         Person p8 = new Person();
         p8.setName("toby");
@@ -236,6 +262,7 @@ public class Person {
         p8.setPassword("123Toby!");
         p8.setCsaPoints(0);
         p8.setCspPoints(0);
+        p8.setCyberPoints(0);
         p8.setProfilePicInt(0);
         p8.setAccountLevel(1);
         p8.setStatsArray(baseStatsArray);
@@ -243,6 +270,8 @@ public class Person {
         p8.setPower(200);
         p8.setTotalHealth(100);
         p8.setTotalDamage(100);
+        p8.setGamesPlayed(0);
+        p8.setKeysCollected(0);
 
         Person p9 = new Person();
         p9.setName("hop");
@@ -250,6 +279,7 @@ public class Person {
         p9.setPassword("123Hop!");
         p9.setCsaPoints(0);
         p9.setCspPoints(0);
+        p9.setCyberPoints(0);
         p9.setProfilePicInt(0);
         p9.setAccountLevel(1);
         p9.setStatsArray(baseStatsArray);
@@ -257,6 +287,8 @@ public class Person {
         p9.setPower(200);
         p9.setTotalHealth(100);
         p9.setTotalDamage(100);
+        p9.setGamesPlayed(0);
+        p9.setKeysCollected(0);
 
         // Array definition and data initialization
         Person persons[] = {p1, p2, p3, p4, p5, p6, p7, p8, p9};

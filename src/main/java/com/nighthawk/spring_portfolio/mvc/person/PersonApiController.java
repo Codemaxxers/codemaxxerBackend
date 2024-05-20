@@ -116,6 +116,12 @@ public class PersonApiController {
         return repository.findTop5ByOrderByCsaPointsDesc();
     }
 
+    @GetMapping("/leaderboardCyber")
+    public List<Person> getLeaderboardCyber() {
+        // Get top 5 users based on cyberPoints
+        return repository.findTop5ByOrderByCyberPointsDesc();
+    }
+
     /*
     DELETE individual Person using ID :)
      */
@@ -184,12 +190,15 @@ public class PersonApiController {
         // If no existing person with the same name, create and save the new person
         int csaPoints = 0;
         int cspPoints = 0;
+        int cyberPoints = 0;
         int profilePicInt = 0;
         int accountPoints = 0;
         int accountLevel = 1;
         int weaponGearIdEquipped = 0;
         int armorGearIdEquipped = 0;
         int accessoryGearIdEquipped = 0;
+        int gamesPlayed = 0;
+        int keysCollected = 0;
         boolean finishedTutorial = false;
         ArrayList<Integer> inventory = new ArrayList<>();
         // base health, gear health, base attack, gear attack
@@ -198,7 +207,7 @@ public class PersonApiController {
         int totalHealth = 100;
         int totalDamage = 100;
         
-        Person person = new Person(email, password, name, csaPoints, cspPoints, profilePicInt, accountPoints, accountLevel, statsArray, inventory, weaponGearIdEquipped, armorGearIdEquipped, accessoryGearIdEquipped, power, totalHealth, totalDamage, finishedTutorial);
+        Person person = new Person(email, password, name, csaPoints, cspPoints, cyberPoints, profilePicInt, accountPoints, accountLevel, statsArray, inventory, weaponGearIdEquipped, armorGearIdEquipped, accessoryGearIdEquipped, power, totalHealth, totalDamage, finishedTutorial, gamesPlayed, keysCollected);
         personDetailsService.save(person);
     
         return new ResponseEntity<>(email + " is created successfully", HttpStatus.CREATED);
@@ -330,8 +339,6 @@ public class PersonApiController {
     }
 
 
-
-
     @PostMapping("/addPointsCSP")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Person> addPointsCSP(@RequestParam("points") int points) {
@@ -377,6 +384,53 @@ public class PersonApiController {
         person.setTotalDamage(totalDamage);
         
         
+        repository.save(person);  // Save the updated Person object
+        return new ResponseEntity<>(person, HttpStatus.OK);
+    }
+
+    @PostMapping("/addPointsCyber")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<Person> addPointsCyber(@RequestParam("points") int points) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Person person = repository.findByEmail(username);  // Retrieve data for the authenticated user
+        person.setCyberPoints(person.getCyberPoints() + points);
+        int accountPointsToBeSet = person.getAccountPoints() + points;
+        person.setAccountPoints(accountPointsToBeSet);
+
+        // START OF ACCOUNT LEVEL CALCULATION
+        int[] levels = {0, 100, 221, 354, 500, 661, 839, 1034, 1248, 1485, 1746, 2031, 2345, 2690, 3069, 3483, 3937, 4438, 4994, 5615, 6301, 7064, 7910, 8857, 9914, 11098, 12389, 13800, 15343, 17029};
+        int newLevel = 0; // Default level
+        for (int i = 0; i < levels.length; i++) {
+            if (accountPointsToBeSet >= levels[i]) {
+                newLevel = i + 1; // Increment level if points meet or exceed the level threshold
+            } else {
+                break; // Break the loop once the current level is determined
+            }
+        }
+        // If points exceed all levels, set the highest level
+        if (accountPointsToBeSet > levels[levels.length - 1]) {
+            newLevel = levels.length;
+        }
+        person.setAccountLevel(newLevel);
+        // END OF ACCOUNT LEVEL CALCULATION
+
+
+
+        // START OF LEVEL STATS CALCULATION
+        int[] baseStats = {100,107,114,121,128,135,141,148,155,162,169,176,183,190,197,204,211,218,225,232,239,246,253,260,267,274,281,288,295,300};
+        int accountLevelMatchingStats = newLevel - 1;
+        int[][] statsArray = person.getStatsArray();
+        statsArray[0][0] = baseStats[accountLevelMatchingStats];
+        statsArray[1][0] = baseStats[accountLevelMatchingStats];
+        person.setStatsArray(statsArray);
+        // END OF LEVEL STATS CALCULATION
+
+        int totalHealth = calculateTotalHealth(statsArray);
+        person.setTotalHealth(totalHealth);
+
+        int totalDamage = calculateTotalDamage(statsArray);
+        person.setTotalDamage(totalDamage);
+
         repository.save(person);  // Save the updated Person object
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
