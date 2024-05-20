@@ -125,6 +125,7 @@ public class PersonApiController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 <<<<<<< HEAD
@@ -140,12 +141,15 @@ public class PersonApiController {
 >>>>>>> f937f0d (keys collected get games played post)
 =======
 >>>>>>> 5056e63 (data base)
+=======
+>>>>>>> 91a2152 (data base)
     @GetMapping("/leaderboardCyber")
     public List<Person> getLeaderboardCyber() {
         // Get top 5 users based on cyberPoints
         return repository.findTop5ByOrderByCyberPointsDesc();
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -164,6 +168,8 @@ public class PersonApiController {
 >>>>>>> f937f0d (keys collected get games played post)
 =======
 >>>>>>> ba20305 (data base)
+=======
+>>>>>>> 91a2152 (data base)
     @GetMapping("/gamesPlayed")
     public List<Person> getGamesPlayed() {
 <<<<<<< HEAD
@@ -251,7 +257,14 @@ public class PersonApiController {
 =======
 =======
 >>>>>>> f523596 (data base)
+<<<<<<< HEAD
 >>>>>>> ba20305 (data base)
+=======
+=======
+=======
+>>>>>>> 732d469 (data base)
+>>>>>>> fe2c80b (data base)
+>>>>>>> 91a2152 (data base)
     /*
     DELETE individual Person using ID :)
      */
@@ -549,6 +562,7 @@ public class PersonApiController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 <<<<<<< HEAD
@@ -564,6 +578,8 @@ public class PersonApiController {
 >>>>>>> f937f0d (keys collected get games played post)
 =======
 >>>>>>> 5056e63 (data base)
+=======
+>>>>>>> 91a2152 (data base)
     @PostMapping("/addPointsCyber")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Person> addPointsCyber(@RequestParam("points") int points) {
@@ -656,6 +672,7 @@ public class PersonApiController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 732d469 (data base)
 =======
@@ -676,6 +693,10 @@ public class PersonApiController {
 >>>>>>> f937f0d (keys collected get games played post)
 =======
 >>>>>>> 5056e63 (data base)
+=======
+=======
+>>>>>>> 732d469 (data base)
+>>>>>>> 91a2152 (data base)
 
     @PostMapping("/changeProfilePic")
     @PreAuthorize("isAuthenticated()")

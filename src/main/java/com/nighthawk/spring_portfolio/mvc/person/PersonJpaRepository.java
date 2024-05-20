@@ -50,6 +50,7 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -73,6 +74,12 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 >>>>>>> d42b71c (keys collected get games played post)
 =======
 >>>>>>> ba20305 (data base)
+=======
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> fe2c80b (data base)
+>>>>>>> 91a2152 (data base)
     List<Person> findTop5ByOrderByGamesPlayedDesc();
 
     List<Person> findTop5ByOrderByKeysCollectedDesc();
@@ -116,8 +123,16 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 >>>>>>> d42b71c (keys collected get games played post)
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> f523596 (data base)
+<<<<<<< HEAD
 >>>>>>> ba20305 (data base)
+=======
+=======
+>>>>>>> 821fd7d (data base)
+>>>>>>> 732d469 (data base)
+>>>>>>> fe2c80b (data base)
+>>>>>>> 91a2152 (data base)
     // You can use no query or query
 
     @Query("SELECT p FROM Person p ORDER BY p.cspPoints DESC")
@@ -137,6 +152,7 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -146,6 +162,8 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 >>>>>>> f25cfd0 (keys collected get games played post)
 =======
 >>>>>>> ba20305 (data base)
+=======
+>>>>>>> 91a2152 (data base)
     @Query("SELECT p FROM Person p ORDER BY p.gamesPlayed DESC")
     List<Person> findByGamesPlayed();
 
@@ -203,7 +221,23 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 =======
 =======
 >>>>>>> f523596 (data base)
+<<<<<<< HEAD
 >>>>>>> ba20305 (data base)
+=======
+=======
+=======
+<<<<<<< HEAD
+    @Query("SELECT p FROM Person p ORDER BY p.gamesPlayed DESC")
+    List<Person> findTop5ByGamesPlayed();
+
+    @Query("SELECT p FROM Person p ORDER BY p.keysCollected DESC")
+    List<Person> findTop5ByKeysCollected();
+
+=======
+>>>>>>> 821fd7d (data base)
+>>>>>>> 732d469 (data base)
+>>>>>>> fe2c80b (data base)
+>>>>>>> 91a2152 (data base)
 }
 
 
