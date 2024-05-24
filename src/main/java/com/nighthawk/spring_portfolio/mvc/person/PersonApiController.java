@@ -133,20 +133,30 @@ public class PersonApiController {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 732d469 (data base)
 =======
 =======
 >>>>>>> 01cc54d (data base)
+=======
+>>>>>>> f3a7030 (keys collected get games played post)
     @GetMapping("/gamesPlayed")
     public List<Person> getGamesPlayed() {
         // Get top 5 users based on cyberPoints
         return repository.findByGamesPlayed();
+=======
+    @GetMapping("/gamesPlayed")
+    public List<Person> getGamesPlayed() {
+        // Get top 5 users based on cyberPoints
+        return repository.findTop5ByOrderByGamesPlayedDesc();
+>>>>>>> a9fc670 (keys collected get games played post)
     }
 
     @GetMapping("/keysCollected")
     public List<Person> getKeysCollected() {
         // Get top 5 users based on cyberPoints
+<<<<<<< HEAD
         return repository.findByKeysCollected();
     }
 
@@ -157,7 +167,16 @@ public class PersonApiController {
 =======
 =======
 >>>>>>> e88d8a6 (data base)
+<<<<<<< HEAD
 >>>>>>> 01cc54d (data base)
+=======
+=======
+        return repository.findTop5ByOrderByKeysCollectedDesc();
+    }
+
+
+>>>>>>> a9fc670 (keys collected get games played post)
+>>>>>>> f3a7030 (keys collected get games played post)
     /*
     DELETE individual Person using ID :)
      */
@@ -461,16 +480,24 @@ public class PersonApiController {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> f25cfd0 (keys collected get games played post)
 =======
 =======
+>>>>>>> f3a7030 (keys collected get games played post)
+=======
 
 
 >>>>>>> e88d8a6 (data base)
+<<<<<<< HEAD
 >>>>>>> 01cc54d (data base)
+=======
+=======
+>>>>>>> a9fc670 (keys collected get games played post)
+>>>>>>> f3a7030 (keys collected get games played post)
         // START OF LEVEL STATS CALCULATION
         int[] baseStats = {100,107,114,121,128,135,141,148,155,162,169,176,183,190,197,204,211,218,225,232,239,246,253,260,267,274,281,288,295,300};
         int accountLevelMatchingStats = newLevel - 1;
