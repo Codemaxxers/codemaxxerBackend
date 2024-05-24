@@ -384,6 +384,9 @@ public class SecurityConfig {
 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b4da06a (original security config)
 //     // Provide security configuration
 // 		@Bean
 // 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -430,6 +433,7 @@ public class SecurityConfig {
 // 				.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 // 			return http.build();
 // 	}
+<<<<<<< HEAD
 // }
 <<<<<<< HEAD
 >>>>>>> 2585d01 (original security config)
@@ -485,4 +489,10 @@ public class SecurityConfig {
 >>>>>>> 73ae742 ( Changes to be committed:)
 }
 >>>>>>> d42b71c (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> f25cfd0 (keys collected get games played post)
+=======
+=======
+// }
+>>>>>>> b4da06a (original security config)
+>>>>>>> cff9539 (original security config)
