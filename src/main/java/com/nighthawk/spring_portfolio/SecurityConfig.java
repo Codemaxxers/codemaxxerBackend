@@ -407,12 +407,18 @@ public class SecurityConfig {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b9f338b (keys collected get games played post)
 =======
 >>>>>>> b4da06a (original security config)
 =======
 >>>>>>> a9fc670 (keys collected get games played post)
+<<<<<<< HEAD
 =======
 >>>>>>> 804a917 (keys collected get games played post)
+=======
+>>>>>>> b9f338b (keys collected get games played post)
 //     // Provide security configuration
 // 		@Bean
 // 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -516,6 +522,9 @@ public class SecurityConfig {
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b9f338b (keys collected get games played post)
 =======
 =======
 =======
@@ -584,6 +593,7 @@ public class SecurityConfig {
 }
 >>>>>>> d42b71c (keys collected get games played post)
 >>>>>>> a9fc670 (keys collected get games played post)
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> f3a7030 (keys collected get games played post)
 =======
@@ -837,3 +847,6 @@ public class SecurityConfig {
 >>>>>>> d42b71c (keys collected get games played post)
 >>>>>>> f25cfd0 (keys collected get games played post)
 >>>>>>> 804a917 (keys collected get games played post)
+=======
+>>>>>>> f3a7030 (keys collected get games played post)
+>>>>>>> b9f338b (keys collected get games played post)
