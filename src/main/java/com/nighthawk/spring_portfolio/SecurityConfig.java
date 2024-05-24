@@ -168,6 +168,7 @@ public class SecurityConfig {
 >>>>>>> 33aaaa2 ( Changes to be committed:)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
 //     // Provide security configuration
@@ -265,6 +266,8 @@ public class SecurityConfig {
 			return http.build();
 	}
 =======
+=======
+>>>>>>> 73ae742 ( Changes to be committed:)
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -311,6 +314,7 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+<<<<<<< HEAD
 >>>>>>> 73ae742 ( Changes to be committed:)
 }
 <<<<<<< HEAD
@@ -477,6 +481,8 @@ public class SecurityConfig {
 				.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 			return http.build();
 	}
+=======
+>>>>>>> 73ae742 ( Changes to be committed:)
 }
 >>>>>>> d42b71c (keys collected get games played post)
 >>>>>>> f25cfd0 (keys collected get games played post)
