@@ -55,6 +55,7 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -166,6 +167,8 @@ public class SecurityConfig {
 // 	}
 =======
 >>>>>>> 33aaaa2 ( Changes to be committed:)
+=======
+>>>>>>> cc34090 ( Changes to be committed:)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -381,7 +384,10 @@ public class SecurityConfig {
 // 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
 // 		return authenticationConfiguration.getAuthenticationManager();
 // 	}
+=======
+>>>>>>> 33aaaa2 ( Changes to be committed:)
 
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -492,7 +498,57 @@ public class SecurityConfig {
 			return http.build();
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+=======
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/authenticate", "/signout").permitAll()
+                .requestMatchers("/reading/**").hasAnyAuthority("ROLE_ADMIN")
+                .requestMatchers("/mvc/person/update/**", "/mvc/person/delete/**").hasAnyAuthority("ROLE_ADMIN")
+                .requestMatchers("/api/person/delete/**").hasAnyAuthority("ROLE_ADMIN")
+                .requestMatchers("/api/questions/deleteQuestion/**").hasAnyAuthority("ROLE_ADMIN")
+                .requestMatchers("/api/questions/makeQuestion/**").hasAnyAuthority("ROLE_ADMIN")
+                .requestMatchers("/**").permitAll()
+            )
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .headers(headers -> headers
+                .addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "https://codemaxxers.github.io"))
+                .addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Credentials", "true"))
+                .addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-ExposedHeaders", "*", "Authorization"))
+                .addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type", "Authorization", "x-csrf-token"))
+                .addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-MaxAge", "600"))
+                .addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "DELETE", "GET", "OPTIONS", "HEAD"))
+            )
+            .formLogin(form -> form.loginPage("/login"))
+            .logout(logout -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+            )
+            .exceptionHandling(exceptions -> exceptions.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
+
+    @Bean
+    public UrlBasedCorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("https://codemaxxers.github.io"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("Content-Type", "Authorization", "x-csrf-token"));
+        configuration.setAllowCredentials(true);
+        configuration.setMaxAge(600L);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+>>>>>>> aa19046 ( Changes to be committed:)
 >>>>>>> 73ae742 ( Changes to be committed:)
 }
 >>>>>>> d42b71c (keys collected get games played post)
