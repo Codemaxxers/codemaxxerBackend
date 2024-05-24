@@ -56,6 +56,11 @@ public class SecurityConfig {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> 62bdd6d ( Changes to be committed:)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -171,8 +176,11 @@ public class SecurityConfig {
 >>>>>>> 33aaaa2 ( Changes to be committed:)
 =======
 >>>>>>> cc34090 ( Changes to be committed:)
+<<<<<<< HEAD
 =======
 >>>>>>> 017efc8 ( Changes to be committed:)
+=======
+>>>>>>> 62bdd6d ( Changes to be committed:)
 
 <<<<<<< HEAD
 =======
@@ -523,9 +531,13 @@ public class SecurityConfig {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> b9f338b (keys collected get games played post)
 =======
+=======
+=======
+>>>>>>> 62bdd6d ( Changes to be committed:)
 =======
 =======
     @Bean
