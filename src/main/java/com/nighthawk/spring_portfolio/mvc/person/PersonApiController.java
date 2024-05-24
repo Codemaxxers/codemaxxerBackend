@@ -127,6 +127,9 @@ public class PersonApiController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9988102 (keys collected get games played post)
 =======
 =======
 <<<<<<< HEAD
@@ -140,6 +143,7 @@ public class PersonApiController {
 =======
 >>>>>>> 4e117c2 (keys collected get games played post)
 >>>>>>> f937f0d (keys collected get games played post)
+<<<<<<< HEAD
 =======
 >>>>>>> 5056e63 (data base)
 =======
@@ -156,12 +160,15 @@ public class PersonApiController {
 >>>>>>> e88d8a6 (data base)
 >>>>>>> 01cc54d (data base)
 >>>>>>> 49ecc31 (data base)
+=======
+>>>>>>> 9988102 (keys collected get games played post)
     @GetMapping("/leaderboardCyber")
     public List<Person> getLeaderboardCyber() {
         // Get top 5 users based on cyberPoints
         return repository.findTop5ByOrderByCyberPointsDesc();
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -192,6 +199,8 @@ public class PersonApiController {
 >>>>>>> 49ecc31 (data base)
 =======
 >>>>>>> b9f338b (keys collected get games played post)
+=======
+>>>>>>> 9988102 (keys collected get games played post)
     @GetMapping("/gamesPlayed")
     public List<Person> getGamesPlayed() {
 <<<<<<< HEAD
@@ -295,12 +304,16 @@ public class PersonApiController {
 =======
 >>>>>>> 07e1846 (keys collected get games played post)
 =======
+>>>>>>> c59be45 (keys collected get games played post)
+=======
 >>>>>>> 732d469 (data base)
 =======
 =======
 >>>>>>> 01cc54d (data base)
 =======
 >>>>>>> f3a7030 (keys collected get games played post)
+=======
+>>>>>>> f937f0d (keys collected get games played post)
     @GetMapping("/gamesPlayed")
     public List<Person> getGamesPlayed() {
         // Get top 5 users based on cyberPoints
@@ -309,20 +322,31 @@ public class PersonApiController {
 =======
         return repository.findByGamesPlayed();
 =======
+=======
+>>>>>>> 4e117c2 (keys collected get games played post)
     @GetMapping("/gamesPlayed")
     public List<Person> getGamesPlayed() {
         // Get top 5 users based on cyberPoints
         return repository.findTop5ByOrderByGamesPlayedDesc();
+<<<<<<< HEAD
 >>>>>>> a9fc670 (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> b9f338b (keys collected get games played post)
+=======
+=======
+>>>>>>> 4e117c2 (keys collected get games played post)
+>>>>>>> 9988102 (keys collected get games played post)
     }
 
     @GetMapping("/keysCollected")
     public List<Person> getKeysCollected() {
         // Get top 5 users based on cyberPoints
 <<<<<<< HEAD
+<<<<<<< HEAD
         return repository.findTop5ByOrderByKeysCollectedDesc();
 =======
+=======
+>>>>>>> 9988102 (keys collected get games played post)
 <<<<<<< HEAD
         return repository.findByKeysCollected();
 >>>>>>> b9f338b (keys collected get games played post)
@@ -351,14 +375,29 @@ public class PersonApiController {
 =======
 =======
 =======
+=======
+>>>>>>> 4e117c2 (keys collected get games played post)
         return repository.findTop5ByOrderByKeysCollectedDesc();
     }
 
 
+<<<<<<< HEAD
 >>>>>>> a9fc670 (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> f3a7030 (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> 07e1846 (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> b9f338b (keys collected get games played post)
+=======
+=======
+=======
+=======
+>>>>>>> 70fe2a2 (keys collected get games played post)
+>>>>>>> 4e117c2 (keys collected get games played post)
+>>>>>>> f937f0d (keys collected get games played post)
+>>>>>>> c59be45 (keys collected get games played post)
+>>>>>>> 9988102 (keys collected get games played post)
     /*
     DELETE individual Person using ID :)
      */
@@ -658,6 +697,9 @@ public class PersonApiController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9988102 (keys collected get games played post)
 =======
 =======
 <<<<<<< HEAD
@@ -671,6 +713,7 @@ public class PersonApiController {
 =======
 >>>>>>> 4e117c2 (keys collected get games played post)
 >>>>>>> f937f0d (keys collected get games played post)
+<<<<<<< HEAD
 =======
 >>>>>>> 5056e63 (data base)
 =======
@@ -687,6 +730,8 @@ public class PersonApiController {
 >>>>>>> e88d8a6 (data base)
 >>>>>>> 01cc54d (data base)
 >>>>>>> 49ecc31 (data base)
+=======
+>>>>>>> 9988102 (keys collected get games played post)
     @PostMapping("/addPointsCyber")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Person> addPointsCyber(@RequestParam("points") int points) {
@@ -713,6 +758,7 @@ public class PersonApiController {
         person.setAccountLevel(newLevel);
         // END OF ACCOUNT LEVEL CALCULATION
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -761,6 +807,8 @@ public class PersonApiController {
 =======
 >>>>>>> b9f338b (keys collected get games played post)
 =======
+>>>>>>> 9988102 (keys collected get games played post)
+=======
 
 
 >>>>>>> f523596 (data base)
@@ -772,6 +820,8 @@ public class PersonApiController {
 >>>>>>> f4c64c9 (data base)
 =======
 >>>>>>> 07e1846 (keys collected get games played post)
+=======
+>>>>>>> c59be45 (keys collected get games played post)
 
 
 =======
@@ -785,6 +835,8 @@ public class PersonApiController {
 =======
 =======
 >>>>>>> f3a7030 (keys collected get games played post)
+=======
+>>>>>>> f937f0d (keys collected get games played post)
 =======
 
 
@@ -800,9 +852,20 @@ public class PersonApiController {
 =======
 =======
 >>>>>>> a9fc670 (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> f3a7030 (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> 07e1846 (keys collected get games played post)
+<<<<<<< HEAD
 >>>>>>> b9f338b (keys collected get games played post)
+=======
+=======
+=======
+=======
+>>>>>>> 4e117c2 (keys collected get games played post)
+>>>>>>> f937f0d (keys collected get games played post)
+>>>>>>> c59be45 (keys collected get games played post)
+>>>>>>> 9988102 (keys collected get games played post)
         // START OF LEVEL STATS CALCULATION
         int[] baseStats = {100,107,114,121,128,135,141,148,155,162,169,176,183,190,197,204,211,218,225,232,239,246,253,260,267,274,281,288,295,300};
         int accountLevelMatchingStats = newLevel - 1;
@@ -829,10 +892,13 @@ public class PersonApiController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 804a917 (keys collected get games played post)
 =======
 >>>>>>> 49ecc31 (data base)
+=======
+>>>>>>> 9988102 (keys collected get games played post)
 =======
 >>>>>>> 732d469 (data base)
 =======
@@ -848,6 +914,9 @@ public class PersonApiController {
 >>>>>>> e88d8a6 (data base)
 >>>>>>> 01cc54d (data base)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9988102 (keys collected get games played post)
 =======
 >>>>>>> 70fe2a2 (keys collected get games played post)
 =======
@@ -856,6 +925,7 @@ public class PersonApiController {
 >>>>>>> 70fe2a2 (keys collected get games played post)
 >>>>>>> 4e117c2 (keys collected get games played post)
 >>>>>>> f937f0d (keys collected get games played post)
+<<<<<<< HEAD
 =======
 >>>>>>> 5056e63 (data base)
 =======
@@ -866,6 +936,8 @@ public class PersonApiController {
 >>>>>>> 804a917 (keys collected get games played post)
 =======
 >>>>>>> 49ecc31 (data base)
+=======
+>>>>>>> 9988102 (keys collected get games played post)
 
     @PostMapping("/changeProfilePic")
     @PreAuthorize("isAuthenticated()")
