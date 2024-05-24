@@ -406,10 +406,13 @@ public class SecurityConfig {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> b4da06a (original security config)
 =======
 >>>>>>> a9fc670 (keys collected get games played post)
+=======
+>>>>>>> 804a917 (keys collected get games played post)
 //     // Provide security configuration
 // 		@Bean
 // 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -710,7 +713,9 @@ public class SecurityConfig {
 <<<<<<< HEAD
 <<<<<<< HEAD
 // }
+<<<<<<< HEAD
 >>>>>>> 2585d01 (original security config)
+<<<<<<< HEAD
 >>>>>>> e1ca326 (original security config)
 <<<<<<< HEAD
 >>>>>>> db68d8d (original security config)
@@ -725,6 +730,10 @@ public class SecurityConfig {
 =======
 // }
 =======
+=======
+=======
+=======
+>>>>>>> 804a917 (keys collected get games played post)
     // Provide security configuration
 		@Bean
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -771,6 +780,7 @@ public class SecurityConfig {
 				.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 			return http.build();
 	}
+<<<<<<< HEAD
 =======
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -822,3 +832,8 @@ public class SecurityConfig {
 }
 >>>>>>> 33aaaa2 ( Changes to be committed:)
 >>>>>>> 017efc8 ( Changes to be committed:)
+=======
+}
+>>>>>>> d42b71c (keys collected get games played post)
+>>>>>>> f25cfd0 (keys collected get games played post)
+>>>>>>> 804a917 (keys collected get games played post)

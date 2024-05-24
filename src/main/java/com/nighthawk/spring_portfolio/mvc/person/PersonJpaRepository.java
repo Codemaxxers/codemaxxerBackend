@@ -51,6 +51,7 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -76,14 +77,29 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 >>>>>>> ba20305 (data base)
 =======
 =======
+>>>>>>> 804a917 (keys collected get games played post)
+=======
 =======
 <<<<<<< HEAD
 >>>>>>> fe2c80b (data base)
+<<<<<<< HEAD
 >>>>>>> 91a2152 (data base)
+=======
+=======
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 70fe2a2 (keys collected get games played post)
+>>>>>>> f25cfd0 (keys collected get games played post)
+>>>>>>> 0ec9519 (keys collected get games played post)
+>>>>>>> 804a917 (keys collected get games played post)
     List<Person> findTop5ByOrderByGamesPlayedDesc();
 
     List<Person> findTop5ByOrderByKeysCollectedDesc();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -123,6 +139,8 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 >>>>>>> d42b71c (keys collected get games played post)
 =======
 =======
+>>>>>>> 804a917 (keys collected get games played post)
+=======
 <<<<<<< HEAD
 >>>>>>> f523596 (data base)
 <<<<<<< HEAD
@@ -130,9 +148,20 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 =======
 =======
 >>>>>>> 821fd7d (data base)
+<<<<<<< HEAD
 >>>>>>> 732d469 (data base)
+<<<<<<< HEAD
 >>>>>>> fe2c80b (data base)
+<<<<<<< HEAD
 >>>>>>> 91a2152 (data base)
+=======
+=======
+=======
+=======
+>>>>>>> 70fe2a2 (keys collected get games played post)
+>>>>>>> f25cfd0 (keys collected get games played post)
+>>>>>>> 0ec9519 (keys collected get games played post)
+>>>>>>> 804a917 (keys collected get games played post)
     // You can use no query or query
 
     @Query("SELECT p FROM Person p ORDER BY p.cspPoints DESC")
@@ -153,6 +182,7 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -164,6 +194,8 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 >>>>>>> ba20305 (data base)
 =======
 >>>>>>> 91a2152 (data base)
+=======
+>>>>>>> 804a917 (keys collected get games played post)
     @Query("SELECT p FROM Person p ORDER BY p.gamesPlayed DESC")
     List<Person> findByGamesPlayed();
 
@@ -226,18 +258,37 @@ public interface PersonJpaRepository extends JpaRepository<Person, Long> {
 =======
 =======
 =======
+>>>>>>> 0ec9519 (keys collected get games played post)
+=======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 70fe2a2 (keys collected get games played post)
+>>>>>>> f25cfd0 (keys collected get games played post)
     @Query("SELECT p FROM Person p ORDER BY p.gamesPlayed DESC")
     List<Person> findTop5ByGamesPlayed();
 
     @Query("SELECT p FROM Person p ORDER BY p.keysCollected DESC")
     List<Person> findTop5ByKeysCollected();
 
+<<<<<<< HEAD
 =======
 >>>>>>> 821fd7d (data base)
+<<<<<<< HEAD
 >>>>>>> 732d469 (data base)
+<<<<<<< HEAD
 >>>>>>> fe2c80b (data base)
+<<<<<<< HEAD
 >>>>>>> 91a2152 (data base)
+=======
+=======
+=======
+=======
+>>>>>>> 70fe2a2 (keys collected get games played post)
+>>>>>>> f25cfd0 (keys collected get games played post)
+>>>>>>> 0ec9519 (keys collected get games played post)
+>>>>>>> 804a917 (keys collected get games played post)
 }
 
 
