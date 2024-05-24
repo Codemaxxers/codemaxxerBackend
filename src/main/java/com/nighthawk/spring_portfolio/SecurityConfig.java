@@ -331,6 +331,7 @@ public class SecurityConfig {
 >>>>>>> 73ae742 ( Changes to be committed:)
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 33aaaa2 ( Changes to be committed:)
 =======
 
@@ -581,6 +582,8 @@ public class SecurityConfig {
 >>>>>>> f3a7030 (keys collected get games played post)
 =======
 =======
+=======
+>>>>>>> 6b08833 (original security config)
 
 //<------------------ORIGINAL SECURITY CONFIG BREAK COMMENT IF NEEDED------------------>
 // package com.nighthawk.spring_portfolio;
@@ -645,6 +648,9 @@ public class SecurityConfig {
 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6b08833 (original security config)
 //     // Provide security configuration
 // 		@Bean
 // 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -692,6 +698,7 @@ public class SecurityConfig {
 // 			return http.build();
 // 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 // }
 >>>>>>> 2585d01 (original security config)
 >>>>>>> e1ca326 (original security config)
@@ -702,3 +709,6 @@ public class SecurityConfig {
 // }
 >>>>>>> 4e117c2 (keys collected get games played post)
 >>>>>>> f937f0d (keys collected get games played post)
+=======
+// }
+>>>>>>> 6b08833 (original security config)
