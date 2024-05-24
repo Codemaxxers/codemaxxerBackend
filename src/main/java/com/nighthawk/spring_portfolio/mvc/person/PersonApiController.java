@@ -83,6 +83,8 @@ public class PersonApiController {
         response.put("previousLevelXPThreshold", calculatePreviousLevelXPThreshold(person.getAccountLevel()));
         response.put("totalHealth", person.getTotalHealth());
         response.put("totalDamage", person.getTotalDamage());
+        response.put("gamesPlayed", person.getGamesPlayed());
+        response.put("keysCollected", person.getKeysCollected());
         response.put("finishedTutorial", person.isFinishedTutorial());
         // Add more properties as needed
 
@@ -146,6 +148,7 @@ public class PersonApiController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 732d469 (data base)
 =======
@@ -162,19 +165,25 @@ public class PersonApiController {
 =======
 =======
 >>>>>>> 4e117c2 (keys collected get games played post)
+=======
+>>>>>>> d42b71c (keys collected get games played post)
     @GetMapping("/gamesPlayed")
     public List<Person> getGamesPlayed() {
         // Get top 5 users based on cyberPoints
         return repository.findTop5ByOrderByGamesPlayedDesc();
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> a9fc670 (keys collected get games played post)
 =======
 >>>>>>> 4e117c2 (keys collected get games played post)
+=======
+>>>>>>> d42b71c (keys collected get games played post)
     }
 
     @GetMapping("/keysCollected")
     public List<Person> getKeysCollected() {
         // Get top 5 users based on cyberPoints
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         return repository.findByKeysCollected();
@@ -193,10 +202,13 @@ public class PersonApiController {
 =======
 =======
 >>>>>>> 4e117c2 (keys collected get games played post)
+=======
+>>>>>>> d42b71c (keys collected get games played post)
         return repository.findTop5ByOrderByKeysCollectedDesc();
     }
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> a9fc670 (keys collected get games played post)
 <<<<<<< HEAD
@@ -208,6 +220,8 @@ public class PersonApiController {
 >>>>>>> f937f0d (keys collected get games played post)
 =======
 >>>>>>> 5056e63 (data base)
+=======
+>>>>>>> d42b71c (keys collected get games played post)
     /*
     DELETE individual Person using ID :)
      */
@@ -246,21 +260,16 @@ public class PersonApiController {
              return new ResponseEntity<>(existingPerson, HttpStatus.OK); 
          } else {
              // If the person with the given id does not exist, return 404 Not Found
-             return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
-         }   
+             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+         }
      }
-     
-     
-     
 
 
-
-    
     @PostMapping("/post")
     public ResponseEntity<Object> postPerson(@RequestParam("email") String email,
                                              @RequestParam("password") String password,
                                              @RequestParam("name") String name) {
-    
+
         // Check if a person with the same name already exists
         Person existingPerson = personDetailsService.getByName(name);
         if (existingPerson != null) {
@@ -272,7 +281,7 @@ public class PersonApiController {
         if (existingPersonByEmail != null) {
             return new ResponseEntity<>("User with email " + email + " already exists", HttpStatus.BAD_REQUEST);
         }
-    
+
         // If no existing person with the same name, create and save the new person
         int csaPoints = 0;
         int cspPoints = 0;
@@ -370,12 +379,22 @@ public class PersonApiController {
             return new ResponseEntity<>(person, HttpStatus.OK);
         }
         // return Bad ID
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    
 
 
-    
+
+    //add number of game plays for cyber games
+    @PostMapping("/addGamePlay")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<Person> addGamePlay(@RequestParam("plays") int plays) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Person person = repository.findByEmail(username);
+        person.setGamesPlayed(person.getGamesPlayed() + plays);
+
+        repository.save(person);  // Save the updated Person object
+        return new ResponseEntity<>(person, HttpStatus.OK);
+    }
 
     @PostMapping("/addPointsCSA")
     @PreAuthorize("isAuthenticated()")
@@ -524,6 +543,7 @@ public class PersonApiController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
@@ -552,6 +572,8 @@ public class PersonApiController {
 
 
 >>>>>>> 5056e63 (data base)
+=======
+>>>>>>> d42b71c (keys collected get games played post)
         // START OF LEVEL STATS CALCULATION
         int[] baseStats = {100,107,114,121,128,135,141,148,155,162,169,176,183,190,197,204,211,218,225,232,239,246,253,260,267,274,281,288,295,300};
         int accountLevelMatchingStats = newLevel - 1;
