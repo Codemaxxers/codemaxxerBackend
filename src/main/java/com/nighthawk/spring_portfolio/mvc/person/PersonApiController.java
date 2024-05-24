@@ -117,14 +117,35 @@ public class PersonApiController {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f25cfd0 (keys collected get games played post)
     @GetMapping("/leaderboardCyber")
     public List<Person> getLeaderboardCyber() {
         // Get top 5 users based on cyberPoints
         return repository.findTop5ByOrderByCyberPointsDesc();
     }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 732d469 (data base)
+=======
+    @GetMapping("/gamesPlayed")
+    public List<Person> getGamesPlayed() {
+        // Get top 5 users based on cyberPoints
+        return repository.findTop5ByOrderByGamesPlayedDesc();
+    }
+
+    @GetMapping("/keysCollected")
+    public List<Person> getKeysCollected() {
+        // Get top 5 users based on cyberPoints
+        return repository.findTop5ByOrderByKeysCollectedDesc();
+    }
+
+
+>>>>>>> 70fe2a2 (keys collected get games played post)
+>>>>>>> f25cfd0 (keys collected get games played post)
     /*
     DELETE individual Person using ID :)
      */
@@ -392,6 +413,10 @@ public class PersonApiController {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f25cfd0 (keys collected get games played post)
     @PostMapping("/addPointsCyber")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Person> addPointsCyber(@RequestParam("points") int points) {
@@ -418,8 +443,11 @@ public class PersonApiController {
         person.setAccountLevel(newLevel);
         // END OF ACCOUNT LEVEL CALCULATION
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f25cfd0 (keys collected get games played post)
         // START OF LEVEL STATS CALCULATION
         int[] baseStats = {100,107,114,121,128,135,141,148,155,162,169,176,183,190,197,204,211,218,225,232,239,246,253,260,267,274,281,288,295,300};
         int accountLevelMatchingStats = newLevel - 1;
@@ -439,8 +467,12 @@ public class PersonApiController {
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 732d469 (data base)
+=======
+>>>>>>> 70fe2a2 (keys collected get games played post)
+>>>>>>> f25cfd0 (keys collected get games played post)
 
     @PostMapping("/changeProfilePic")
     @PreAuthorize("isAuthenticated()")

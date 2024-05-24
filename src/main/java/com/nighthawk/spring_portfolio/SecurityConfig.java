@@ -379,6 +379,7 @@ public class SecurityConfig {
 // 	}
 
 	
+<<<<<<< HEAD
 //     // Provide security configuration
 // 		@Bean
 // 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -426,4 +427,56 @@ public class SecurityConfig {
 // 			return http.build();
 // 	}
 // }
+<<<<<<< HEAD
 >>>>>>> 2585d01 (original security config)
+=======
+=======
+    // Provide security configuration
+		@Bean
+		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+			http
+				.csrf(csrf -> csrf
+					.disable()
+				)
+				// list the requests/endpoints need to be authenticated
+				.authorizeHttpRequests(auth -> auth
+					.requestMatchers("/authenticate", "/signout").permitAll()
+					.requestMatchers("/reading/**").hasAnyAuthority("ROLE_ADMIN")
+					.requestMatchers("/mvc/person/update/**", "/mvc/person/delete/**").hasAnyAuthority("ROLE_ADMIN")
+					.requestMatchers("/api/person/delete/**").hasAnyAuthority("ROLE_ADMIN")
+					.requestMatchers("/api/questions/deleteQuestion/**").hasAnyAuthority("ROLE_ADMIN")
+					.requestMatchers("/api/questions/makeQuestion/**").hasAnyAuthority("ROLE_ADMIN")
+					.requestMatchers("/**").permitAll()
+				)
+				// support cors
+				.cors(Customizer.withDefaults())
+				.headers(headers -> headers
+					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "http://127.0.0.1:4100", "https://codemaxxers.stu.nighthawkcodingsociety.com", "https://codemaxxers.github.io", "https://vivanknee.github.io"))
+					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Credentials", "true"))
+					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-ExposedHeaders", "*", "Authorization"))
+					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type", "Authorization", "x-csrf-token"))
+					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-MaxAge", "600"))
+					.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "GET", "OPTIONS", "HEAD"))
+				)
+				.formLogin(form -> form 
+					.loginPage("/login")
+				)
+				.logout(logout -> logout
+					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+					.logoutSuccessUrl("/")
+				)
+				// make sure we use stateless session; 
+				// session won't be used to store user's state.
+				.exceptionHandling(exceptions -> exceptions
+					.authenticationEntryPoint(jwtAuthenticationEntryPoint)
+				)
+				.sessionManagement(session -> session
+					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				)
+				// Add a filter to validate the tokens with every request
+				.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+			return http.build();
+	}
+}
+>>>>>>> d42b71c (keys collected get games played post)
+>>>>>>> f25cfd0 (keys collected get games played post)
