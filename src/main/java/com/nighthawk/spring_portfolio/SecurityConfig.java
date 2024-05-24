@@ -56,6 +56,7 @@ public class SecurityConfig {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -171,6 +172,9 @@ public class SecurityConfig {
 >>>>>>> cc34090 ( Changes to be committed:)
 
 <<<<<<< HEAD
+=======
+
+>>>>>>> 027a5c9 ( Changes to be committed:)
 <<<<<<< HEAD
 	
 <<<<<<< HEAD
@@ -269,8 +273,11 @@ public class SecurityConfig {
 			return http.build();
 	}
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> 73ae742 ( Changes to be committed:)
+=======
+>>>>>>> 027a5c9 ( Changes to be committed:)
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -318,6 +325,9 @@ public class SecurityConfig {
         return source;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 027a5c9 ( Changes to be committed:)
 >>>>>>> 73ae742 ( Changes to be committed:)
 }
 <<<<<<< HEAD
