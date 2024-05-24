@@ -134,13 +134,13 @@ public class PersonApiController {
     @GetMapping("/gamesPlayed")
     public List<Person> getGamesPlayed() {
         // Get top 5 users based on cyberPoints
-        return repository.findTop5ByOrderByGamesPlayedDesc();
+        return repository.findByGamesPlayed();
     }
 
     @GetMapping("/keysCollected")
     public List<Person> getKeysCollected() {
         // Get top 5 users based on cyberPoints
-        return repository.findTop5ByOrderByKeysCollectedDesc();
+        return repository.findByKeysCollected();
     }
 
 
