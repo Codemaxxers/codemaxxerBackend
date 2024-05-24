@@ -1,11 +1,11 @@
 package com.nighthawk.spring_portfolio.mvc.person;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collections; 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Optional; 
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 
 
@@ -194,6 +195,7 @@ public class PersonApiController {
         return repository.findByKeysCollected();
     }
 
+<<<<<<< HEAD
 
 >>>>>>> 70fe2a2 (keys collected get games played post)
 <<<<<<< HEAD
@@ -230,6 +232,8 @@ public class PersonApiController {
 >>>>>>> 5056e63 (data base)
 =======
 >>>>>>> d42b71c (keys collected get games played post)
+=======
+>>>>>>> d795ed9 (d)
     /*
     DELETE individual Person using ID :)
      */
