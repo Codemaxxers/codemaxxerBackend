@@ -374,6 +374,16 @@ public class PersonApiController {
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
+    @PostMapping("/resetGamePlay")
+    public ResponseEntity<Person> resetGamePlay(@RequestParam("plays") int plays) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Person person = repository.findByEmail(username);
+        person.setGamesPlayed(person.getGamesPlayed() - plays);
+
+        repository.save(person);
+        return new ResponseEntity<>(person, HttpStatus.OK);
+    }
+
     @PostMapping("/addKey")
     public ResponseEntity<Person> addKey(@RequestParam("numKeys") int numKeys) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
