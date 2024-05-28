@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.javacompiler;
+package com.nighthawk.spring_portfolio.mvc.compile;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

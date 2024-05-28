@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.javacompiler;
+package com.nighthawk.spring_portfolio.mvc.compile;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class Judge0Controller {
+public class JudgeController {
 
     @Value("${judge0.api.url}")
     private String judge0ApiUrl;
@@ -19,6 +19,7 @@ public class Judge0Controller {
     private String judge0ApiKey;
 
     @PostMapping("/compile")
+    @CrossOrigin(origins = "*")  // This allows requests from any origin. Adjust as needed for security.
     public ResponseEntity<Map<String, Object>> compileAndRun(@RequestBody Map<String, String> request) {
         String sourceCode = request.get("code");
         String languageId = "62"; // Language ID for Java in Judge0
@@ -32,7 +33,7 @@ public class Judge0Controller {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("X-RapidAPI-Key", judge0ApiKey);  // Set your RapidAPI key here if using RapidAPI
+        headers.set("Authorization", "Bearer " + judge0ApiKey);
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(payload, headers);
 
@@ -45,4 +46,11 @@ public class Judge0Controller {
         if (responseBody != null && responseBody.containsKey("stdout")) {
             result.put("output", responseBody.get("stdout"));
         } else if (responseBody != null && responseBody.containsKey("stderr")) {
-           
+            result.put("error", responseBody.get("stderr"));
+        } else if (responseBody != null && responseBody.containsKey("compile_output")) {
+            result.put("error", responseBody.get("compile_output"));
+        }
+
+        return ResponseEntity.ok(result);
+    }
+}
