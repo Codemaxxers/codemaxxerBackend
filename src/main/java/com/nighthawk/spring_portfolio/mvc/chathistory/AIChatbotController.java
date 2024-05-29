@@ -108,7 +108,7 @@ public class AIChatbotController {
 
 	// chat request mapping
 	@GetMapping("/chat")
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated()") //new authenticate
 	public String chat(@RequestParam String message) {
 		ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
 		System.out.println("Logged In Person: " + personData.getBody().getId());
