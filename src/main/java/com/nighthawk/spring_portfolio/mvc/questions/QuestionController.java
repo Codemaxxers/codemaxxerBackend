@@ -48,6 +48,7 @@ public class QuestionController {
     }
 
     @GetMapping("/QuestionById/{id}")
+    @PreAuthorize("isAuthenticated()")
     public Question getQuestionById(@PathVariable Integer id) {
         // Fetch all questions for the given unit
         List<Question> questions = questionRepository.findAllById(id);
@@ -58,7 +59,7 @@ public class QuestionController {
             // For example, you can return an error message or throw an exception
             throw new RuntimeException("No question found for id: " + id);
         }
-        
+
         return questions.get(id);
     }
 
