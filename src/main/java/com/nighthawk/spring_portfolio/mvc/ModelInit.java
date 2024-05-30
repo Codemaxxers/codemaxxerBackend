@@ -20,7 +20,6 @@ import com.nighthawk.spring_portfolio.mvc.questions.QuestionRepository;
 import com.nighthawk.spring_portfolio.mvc.questions.Question;
 import com.nighthawk.spring_portfolio.mvc.terms.Term;
 import com.nighthawk.spring_portfolio.mvc.terms.TermRepository;
-
 @Component
 @Configuration // Scans Application for ModelInit Bean, this detects CommandLineRunner
 public class ModelInit {  
@@ -61,7 +60,6 @@ public class ModelInit {
                 for (Question question : questionArray) {
                     questionRepo.save(question);
                 }
-                return;
             }
 
             Term[] termArray = Term.init();
@@ -69,10 +67,8 @@ public class ModelInit {
                 for (Term term : termArray) {
                     termRepo.save(term); 
                 }
-                return;
             }
             
-
             // Person database is populated with test data
             Person[] personArray = Person.init();
             for (Person person : personArray) {
@@ -95,7 +91,6 @@ public class ModelInit {
             personService.addRoleToPerson(personArray[3].getEmail(), "ROLE_ADMIN");
             personService.addRoleToPerson(personArray[4].getEmail(), "ROLE_ADMIN");
             personService.addRoleToPerson(personArray[5].getEmail(), "ROLE_ADMIN");
-            
         };
     }
 }
