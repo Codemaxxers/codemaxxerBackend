@@ -60,18 +60,15 @@ public class AIChatbotController {
 
 	// chat request mapping  
 	@GetMapping("/chat")
-	@PreAuthorize("isAuthenticated()")
-	public ResponseEntity<?> chat(@RequestParam String message) {
-		ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
-		System.out.println("Logged In Person: " + personData.getBody().getId());
-
+	//@PreAuthorize("isAuthenticated()")
+	public ResponseEntity<?> chat(@RequestParam String message,@RequestParam Long personid) {
 		try {
 			// user sends a message that is sent to chat gpt and a response is returned
 			String response = getResponseFromAI(message);
 			System.out.println("Chat: " + message);
 			System.out.println("Response: " + response);
 			
-			Chat chat = new Chat(message, response, new Date(System.currentTimeMillis()), personData.getBody().getId());
+			Chat chat = new Chat(message, response, new Date(System.currentTimeMillis()), personid);
 			Chat chatUpdated = chatJpaRepository.save(chat);
 			System.out.println("Chat saved in db: " + chatUpdated.getId());
 			return new ResponseEntity<Chat>(chatUpdated, HttpStatus.OK);
@@ -82,14 +79,19 @@ public class AIChatbotController {
 		}
 	}
 	
+	private Long getPersonId() {
+		//ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
+		//System.out.println("Logged In Person: " + personData.getBody().getId());
+		//return personData.getBody().getId();
+		return 1l;
+	}
+
 	@DeleteMapping("/chat/history/clear")
-	@PreAuthorize("isAuthenticated()")
+	//@PreAuthorize("isAuthenticated()")
 
-	public String clearChatHistory() {
+	public String clearChatHistory(@RequestParam Long personid) {
 
-		ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
-		System.out.println("Logged In Person: " + personData.getBody().getId());
-		List<Chat> 	chats = chatJpaRepository.deleteByPersonId(personData.getBody().getId());
+		List<Chat> 	chats = chatJpaRepository.deleteByPersonId(personid);
 		JSONObject obj = new JSONObject();
 		JSONArray list = new JSONArray();
        
@@ -103,20 +105,17 @@ public class AIChatbotController {
 	}
 
 	@DeleteMapping("/chat/history/delete/{id}")
-	@PreAuthorize("isAuthenticated()")
-	public List<Chat> deleteChat(@PathVariable Long id) {
-		ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
-		System.out.println("Logged In Person: " + personData.getBody().getId());
+	//@PreAuthorize("isAuthenticated()")
+	public List<Chat> deleteChat(@PathVariable Long id, @RequestParam Long personid) {
 		chatJpaRepository.deleteById(id);
-		return getAllChatsForUser();
+		return getAllChatsForUser(personid);
 	}
 	
 	@GetMapping("/chat/history")
-	@PreAuthorize("isAuthenticated()")
-	public List<Chat> getAllChatsForUser() {
-		ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
-		System.out.println("Logged In Person: " + personData.getBody().getId());
-		List<Chat> 	chats = chatJpaRepository.findByPersonId(personData.getBody().getId());
+	//@PreAuthorize("isAuthenticated()")
+	public List<Chat> getAllChatsForUser(@RequestParam Long personid) {
+		
+		List<Chat> 	chats = chatJpaRepository.findByPersonId(personid);
 		return chats;
 	}
 	
