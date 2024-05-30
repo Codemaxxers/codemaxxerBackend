@@ -330,6 +330,7 @@ public class PersonApiController {
     }
 
     @PostMapping("/resetGamePlay")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Person> resetGamePlay(@RequestParam("plays") int plays) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Person person = repository.findByEmail(username);
