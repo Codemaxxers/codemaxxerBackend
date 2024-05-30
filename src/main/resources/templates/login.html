@@ -71,7 +71,7 @@
             body: JSON.stringify(data)
         }).then((response) => {
             if (response.status === 200) {
-                window.location.replace("http://localhost:8032/reading");
+                window.location.replace("http://localhost:8032/");
             } else {
                 document.getElementById('message').innerText = "Invalid email or password";
             }

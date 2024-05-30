@@ -12,6 +12,7 @@ import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.Header;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpException;
+import org.springframework.http.HttpStatus;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
@@ -30,7 +31,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.function.EntityResponse;
 import com.nighthawk.spring_portfolio.mvc.person.PersonApiController;
 import com.nighthawk.spring_portfolio.mvc.person.Person;
 
@@ -52,30 +52,33 @@ public class AIChatbotController {
 	// create chat GTP thread id
 	private static String threadId  =  "thread_" + dotenv.get("ai_thread_id");
 
-
 	// basic hello greeting
 	@GetMapping("")
 	public String greeting() {
 		return "Hello From Chatbot AI.";
 	}
 
-	// chat request mapping
+	// chat request mapping  
 	@GetMapping("/chat")
 	@PreAuthorize("isAuthenticated()")
-	public String chat(@RequestParam String message) {
+	public ResponseEntity<?> chat(@RequestParam String message) {
 		ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
 		System.out.println("Logged In Person: " + personData.getBody().getId());
 
 		try {
 			// user sends a message that is sent to chat gpt and a response is returned
 			String response = getResponseFromAI(message);
+			System.out.println("Chat: " + message);
+			System.out.println("Response: " + response);
+			
 			Chat chat = new Chat(message, response, new Date(System.currentTimeMillis()), personData.getBody().getId());
 			Chat chatUpdated = chatJpaRepository.save(chat);
 			System.out.println("Chat saved in db: " + chatUpdated.getId());
-			return response;
+			return new ResponseEntity<Chat>(chatUpdated, HttpStatus.OK);
+			//return response;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return e.getMessage();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -91,7 +94,7 @@ public class AIChatbotController {
 		JSONArray list = new JSONArray();
        
 		for (Chat c : chats) {
-			System.out.println(c.getId());
+			System.out.println("Chat ID: " + c.getId());
 			 list.add(c.toJSON());
 		}
 		
@@ -101,7 +104,7 @@ public class AIChatbotController {
 
 	@DeleteMapping("/chat/history/delete/{id}")
 	@PreAuthorize("isAuthenticated()")
-	public String deleteChat(@PathVariable Long id) {
+	public List<Chat> deleteChat(@PathVariable Long id) {
 		ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
 		System.out.println("Logged In Person: " + personData.getBody().getId());
 		chatJpaRepository.deleteById(id);
@@ -110,20 +113,11 @@ public class AIChatbotController {
 	
 	@GetMapping("/chat/history")
 	@PreAuthorize("isAuthenticated()")
-	public String getAllChatsForUser() {
+	public List<Chat> getAllChatsForUser() {
 		ResponseEntity<Person> personData = personApiController.getAuthenticatedPersonData();
 		System.out.println("Logged In Person: " + personData.getBody().getId());
 		List<Chat> 	chats = chatJpaRepository.findByPersonId(personData.getBody().getId());
-		JSONObject obj = new JSONObject();
-		JSONArray list = new JSONArray();
-       
-		for (Chat c : chats) {
-			System.out.println(c.getId());
-			 list.add(c.toJSON());
-		}
-		
-		obj.put("chats", list);
-		return obj.toString();
+		return chats;
 	}
 	
 	@GetMapping("/chat/history/all")
@@ -194,7 +188,7 @@ public class AIChatbotController {
 
 		JSONObject message = sendHttpPost(createMessageUrl, bodyStr, contentType, auth, openAiBeta, org);
 		String messageId = (String) message.get("id");
-		System.out.println(messageId);
+		System.out.println("Message ID:" + messageId);
 		
 		// Call the RUN api
 		String runThreadUrl = "https://api.openai.com/v1/threads/" + threadId + "/runs";
@@ -229,7 +223,7 @@ public class AIChatbotController {
 
 		JSONObject rObj = sendHttpGet(getResponseUrl, contentType, auth, openAiBeta, org);
 
-		System.out.println(rObj.toJSONString());
+		System.out.println("JSON Response: \n" + rObj.toJSONString() + "\n\n");
 		// the response will match the first id
 		String firstId = (String)rObj.get("first_id");
 		// get data array from json

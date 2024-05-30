@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+  
+  #toggle-response-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #toggle-response-btn:hover {
+    background-color: #218838;
+  }
+
+  #profile-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start; /* Align items to the top */
+      margin: 50px auto;
+      padding: 20px;
+      max-width: 800px; /* Adjust as needed */ 
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #profile-info {
+      flex: 1;
+      margin-right: 20px; /* Add space between profile info and form */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center items horizontally */
+  }
+
+  #profile-form button:hover {
+      background-color: #0056b3;
+  }
+
+  .page-content {
+      margin-left: 270px;
+  }
+
+  #msger-send-btn {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+
+  #profilePicChangeButton:hover {
+      background-color: #0056b3;
+  }
+
+  .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.6);
+  }
+
+  .modal-content {
+      background-color: #e9e8ed;
+      margin: 15% auto; 
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; 
+      border-radius: 8px;
+  }
+
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .close:hover,
+      .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  .account-card {
+      width: 300px; /* Adjust width as needed */
+      padding: 20px;
+      background-color: #E5E4E2;
+      border-radius: 10px;
+      margin-left: 80%; /* Adjust margin to match sidebar width */
+      text-align: center;
+      margin-bottom: 20px; /* Adjust bottom margin as needed */
+      position: absolute;
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(230,151,8,1) 0%, rgba(255,0,0,1) 100%);
+  }
+  
+  .msg-info,
+  .msg-text {
+    color: black;
+  }
+</style>
+
+
+
+<head>
+<title>AI Chat Bot</title>
+<link rel="stylesheet" href="assets/css/chatbot.css"> 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <meta charset="utf-8">
+</head>
+<body>
+<section class="msger">
+  <header class="msger-header">
+    <div class="container-profile">
+
+      <div class="summary-row">
+        <div class="sumText">
+          <h1 id="initName"></h1>
+          <input type="hidden" id="initId">
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
+        <div class="account-card">
+          <div id="profilePicture">
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+
+    <div class="msger-header-title">
+      <i class="fa fa-comment" title="AI Chat Bot"></i> AI Chat Bot
+    </div>
+    <div id="waiting" class="msger-header-options" style="display:none">
+      <span><i class="fa fa-cog fa-spin" title="Waiting for response..."></i></span>
+    </div>
+    <div class="msger-header-options" >
+      <span id="retieve_chat_history" style="cursor: pointer;"><i class="fa fa-history" title="Retrieve Chat History..."></i></span>
+      <span style="width: 10px;display: inline-block;">&nbsp;</span>
+      <span id="delete_chat" style="cursor: pointer;"><i class="fa fa-trash" title="Delete Chat History..."></i></span>
+    </div>
+
+    
+  </header>
+
+  <main class="msger-chat">
+    <div class="msg left-msg">
+      <div
+       class="msg-img"
+       style="background-image: url(assets/icons/icons8-chat-bot-64.png); width: 64px;
+  height: 64px;" title="AI Bot"
+      ></div>
+
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">Chat Bot</div>
+          <!-- <div class="msg-info-time">12:45</div> -->
+        </div>
+
+        <div class="msg-text">
+          Hi, welcome to AI Chat Bot! Go ahead and send me a message. 😄
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <form class="msger-inputarea">
+    <input type="text" class="msger-input" placeholder="Enter your message...">
+    <button type="submit" id = "msger-send-btn" class="msger-send-btn">Send</button>
+  </form> 
+  <!--<button id="toggle-response-btn">Toggle Response type (instant or streamed)</button>-->
+</section>
+</body>
+<script type="text/javascript" src="uri.js">
+</script>
+<script type="text/javascript" src="assets/js/chatbot.js">
+</script>
+</html>

@@ -36,12 +36,5 @@ build/
 
 ### Java build ###
 *.class
-src/main/resources/static/assets/icons/icons8-person-94.png
-src/main/resources/static/assets/css/chatbot.css
-src/main/resources/static/assets/icons/icons8-chat-bot-64.png
-src/main/resources/static/uri.js
-src/main/resources/static/cc-assistant.html
-src/main/resources/static/assets/icons/icons8-person-94.png
-src/main/resources/static/assets/css/chatbot.css
-src/main/resources/static/assets/js/chatbot.js
+
 volumes/sqlite.db

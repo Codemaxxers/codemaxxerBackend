@@ -9,9 +9,11 @@ import jakarta.persistence.Id;
 
 import org.json.simple.JSONObject;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Chat {
-	 // automatic unique identifier for Person recordsz
+	 // automatic unique identifier for Person records
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,6 +23,7 @@ public class Chat {
 	}
 	private String chatMessage;
     private String chatReponse;
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss", timezone="PDT")
     private Date timestamp;
     private Long personId;
     
